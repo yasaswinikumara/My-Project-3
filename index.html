@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ticket Booking System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .booking-container {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 350px;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin: 10px 0 5px;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      width: 100%;
+      background: #4CAF50;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    .confirmation {
+      margin-top: 20px;
+      padding: 12px;
+      background: #e8f5e9;
+      border-left: 5px solid #4CAF50;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="booking-container">
+    <h2>Ticket Booking</h2>
+    <form id="ticketForm">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" required>
+
+      <label for="event">Select Event</label>
+      <select id="event" required>
+        <option value="Movie A">Movie A</option>
+        <option value="Movie B">Movie B</option>
+        <option value="Concert">Concert</option>
+      </select>
+
+      <label for="tickets">Number of Tickets</label>
+      <input type="number" id="tickets" min="1" max="10" required>
+
+      <button type="submit">Book Now</button>
+    </form>
+
+    <div class="confirmation" id="confirmationBox"></div>
+  </div>
+
+  <script>
+    document.getElementById("ticketForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      
+      let name = document.getElementById("name").value;
+      let eventName = document.getElementById("event").value;
+      let tickets = document.getElementById("tickets").value;
+
+      let confirmationBox = document.getElementById("confirmationBox");
+      confirmationBox.style.display = "block";
+      confirmationBox.innerHTML = 
+        `<strong>Booking Confirmed!</strong><br>
+        Name: ${name}<br>
+        Event: ${eventName}<br>
+        Tickets: ${tickets}`;
+    });
+  </script>
+</body>
+</html>
